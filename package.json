@@ -1,0 +1,13 @@
+{
+  "name": "game-chat-server",
+  "version": "1.0.0",
+  "description": "WebSocket server for game chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.1",
+    "express": "^4.21.2"
+  }
+}

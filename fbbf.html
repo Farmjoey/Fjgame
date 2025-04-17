@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/J.png?v=1729529423952"
+    />
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="fbbf.css" />
+  </head>
+  <body>
+    <header class="header">
+        <nav class="navbar">
+          <div class="hamburger" id="hamburger">&#9776;</div>
+          <span class="login" id="user-info">
+            <a class="login" href="/login.html">Login</a>
+            <a class="login" href="/signup.html">Sign up</a>
+          </span>
+          <div class="nav-links" id="nav-links">
+            <div class="games-grid">
+              <div class="game-card" onclick="window.location.href='.'">
+                <h3>Home</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='fbbf.html'">
+                <h3>Flappy Bird</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='ttt.html'">
+                <h3>Tic Tac Toe</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='gtn.html'">
+                <h3>Guess the Number</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='wg.html'">
+                <h3>Wordle Game</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='rps.html'">
+                <h3>Rock Paper Scissors</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='mg.html'">
+                <h3>Memory Game</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='casino.html'">
+                <h3>Casino</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='trading.html'">
+                <h3>Gift</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='settings.html'">
+                <h3>Settings</h3>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <div id="shopMenu" class="shop-menu">
+      <h2>Shop</h2>
+      <div class="shop-coins">Your Coins: <span id="shopCoinsDisplay">0</span></div>
+      <div class="shop-items">
+        <!-- Skins Section -->
+        <div class="shop-item">
+          <h4>Blue Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/a183a6a6-887a-4df5-b377-4bacac1507ed/109941-logo-bird-flappy-free-transparent-image-hq.png?v=1731766959633" 
+               alt="Blue Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="blueBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Sky Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/skybird.png?v=1737634179438" 
+               alt="Sky Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="skyBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Maker Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/birdmaker.png?v=1732129060676" 
+               alt="Maker Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="makerBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Old Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/birdold.png?v=1732129057515" 
+               alt="Old Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="oldBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Gay Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/gaybird.png?v=1737634807247" 
+               alt="Gay Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="gayBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Green Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/Greenbird.png?v=1737625395421" 
+               alt="Green Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="greenBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Red Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/redbird.png?v=1737634940085" 
+               alt="Red Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="redBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Admin Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/adminbird.png?v=1737633378122" 
+               alt="Admin Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 100000 coins</p>
+          <button class="upgrade-btn" data-type="adminBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Jule Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/julebird.png?v=1737625423581" 
+               alt="Jule Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="juleBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Jones Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/jonesbird.png?v=1737634136020" 
+               alt="Jones Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="jonesBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Monster Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/monsterbird.png?v=1737635198464" 
+               alt="Monster Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="monsterBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Primo Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/primobird.png?v=1737654857794" 
+               alt="Primo Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="primoBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Omirp Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/omirpbird.png?v=1737654882084" 
+               alt="Omirp Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="omirpBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Neerg Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/neergbird.png?v=1737633385748" 
+               alt="Neerg Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="neergBirdSkin">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Dansk Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/danskbird.png?v=1737657507949" 
+               alt="Dansk Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="danskBirdSkin">Buy</button>
+        </div>
+
+        <!-- Add new Pixil Bird Skin -->
+        <div class="shop-item">
+          <h4>Pixil Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/pixil-frame-0%20(4).png?v=1737713161228" 
+               alt="Pixil Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="pixilBirdSkin">Buy</button>
+        </div>
+
+        <!-- Add new Invisible Bird Skin -->
+        <div class="shop-item">
+          <h4>Invisible Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/invisbird.png?v=1737747973698" 
+               alt="Invisible Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="invisibleBirdSkin">Buy</button>
+        </div>
+
+        <!-- Add new Poland Bird Skin -->
+        <div class="shop-item">
+          <h4>Poland Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/polandbird.png?v=1737748028818" 
+               alt="Poland Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="polandBirdSkin">Buy</button>
+        </div>
+        
+                <!-- Add new Countryball Maker Bird Skin -->
+        <div class="shop-item">
+          <h4>Countryball Maker Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/countryball_makerbird.png?v=1737747994014" 
+               alt="Countryball Maker Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="countryballBirdSkin">Buy</button>
+        </div>
+
+        <!-- Upgrades Section -->
+        <div class="shop-item">
+          <h4>Wider Pipe Gap</h4>
+          <p>Makes the game easier by increasing space between pipes</p>
+          <p>Cost: 10000 coins</p>
+          <button class="upgrade-btn" data-type="widerPipeGap">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Slower Pipes</h4>
+          <p>Reduces pipe movement speed</p>
+          <p>Cost: 10000 coins</p>
+          <button class="upgrade-btn" data-type="slowerPipes">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>Lower Gravity</h4>
+          <p>Makes the bird fall slower for easier control</p>
+          <p>Cost: 10000 coins</p>
+          <button class="upgrade-btn" data-type="lowerGravity">Buy</button>
+        </div>
+        <div class="shop-item">
+          <h4>3X Coins</h4>
+          <p>Triple the coins you earn from passing pipes!</p>
+          <p>Cost: 100000 coins</p>
+          <button class="upgrade-btn" data-type="tripleCoins">Buy</button>
+        </div>
+
+        <!-- Add new Second Chance upgrade -->
+        <div class="shop-item">
+          <h4>Second Chance</h4>
+          <p>Survive one collision with pipes! Your bird becomes transparent when using this power.</p>
+          <p>Cost: 75000 coins</p>
+          <button class="upgrade-btn" data-type="secondChance">Buy</button>
+        </div>
+
+        <!-- Special Pack Section -->
+        <div class="shop-item">
+          <h4>Owner Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/ownerbird.png?v=1737712622618" 
+               alt="Owner Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="ownerBirdSkin">Buy</button>
+        </div>
+
+        <!-- Add new Pixil2 Bird Skin -->
+        <div class="shop-item">
+          <h4>Pixil2 Bird Skin</h4>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/pixil-frame-0%20(6).png?v=1737986940333" 
+               alt="Pixil2 Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="pixil2BirdSkin">Buy</button>
+        </div>
+
+        <!-- Add to shop items section -->
+        <div class="shop-item">
+          <h4>Pixil3 Bird Skin</h4>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/pixil-frame-0%20(5).png?v=1737986945570" 
+               alt="Pixil3 Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="pixil3BirdSkin">Buy</button>
+        </div>
+
+        <!-- Add this inside the shop-items div, with the other skin items -->
+        <div class="shop-item">
+          <h4>Gray Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/gray.png?v=1740405202322" 
+               alt="Gray Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="grayBirdSkin">Buy</button>
+        </div>
+
+        <!-- Add this inside the shop-items div, with the other skin items -->
+        <div class="shop-item">
+          <h4>CYHN Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/cyhn.png?v=1740405798099" 
+               alt="CYHN Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="cyhnBirdSkin">Buy</button>
+        </div>
+
+        <!-- Add this inside the shop-items div, with the other skin items -->
+        <div class="shop-item">
+          <h4>Uncollared Bird Skin</h4>
+          <p>Change your bird's appearance</p>
+          <img src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/uncollardbird.png?v=1740671059886" 
+               alt="Uncollared Bird Skin" 
+               style="width: 50px; height: auto; margin: 5px 0;">
+          <p>Cost: 50000 coins</p>
+          <button class="upgrade-btn" data-type="uncollaredBirdSkin">Buy</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="game-container">
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+        <div id="sideInventory" class="side-inventory">
+            <h3 class="green-text">Bird Skins</h3>
+            <div class="skins-grid">
+                <!-- Skins will be added here dynamically -->
+            </div>
+            <h3 class="green-text">Your Upgrades</h3>
+            <ul id="sideUpgradesList">
+                <!-- Upgrades will be listed here -->
+            </ul>
+        </div>
+        <div id="leaderboard" class="leaderboard">
+            <h3 class="green-text">Leaderboard</h3>
+            <ol id="leaderboardList"></ol>
+        </div>
+    </div>
+    
+
+    <!-- Hack Menu -->
+    <div id="hackMenu">
+      <h3>Hack Menu</h3>
+      <button id="godModeButton">Toggle God Mode</button>
+      <input
+        type="text"
+        id="godModeKey"
+        class="keybind-input"
+        placeholder="none"
+        readonly
+      />
+      <button id="increaseScoreButton">Increase Score by 100</button>
+      <input
+        type="text"
+        id="increaseScoreKey"
+        class="keybind-input"
+        placeholder="none"
+        readonly
+      />
+      <button id="addCoinsButton">Add 5000 Coins</button>
+    </div>
+
+    <!-- Add this after the hack menu -->
+    <div id="shopControlPanel" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 450px; height: 85vh; background: #1a1a1a; overflow-y: auto; z-index: 9999; color: white; margin: 0; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+        <div style="position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;">
+            <button class="close-btn" onclick="document.getElementById('shopControlPanel').style.display='none'" style="position: absolute; top: 10px; right: 10px; font-size: 24px; background: none; border: none; cursor: pointer; color: white;">×</button>
+            <h3 style="text-align: center; margin-top: 10px; color: #4CAF50; font-size: 24px;">Shop Control Panel</h3>
+            
+            <div class="control-section" style="width: 100%; margin: 10px auto; padding: 10px;">
+                <h4 style="color: #4CAF50; margin-bottom: 10px;">Skins Management</h4>
+                <div class="skin-controls" style="display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%;">
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Blue Bird Skin:</label>
+                        <button onclick="toggleShopItem('blueBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Sky Bird Skin:</label>
+                        <button onclick="toggleShopItem('skyBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Maker Bird Skin:</label>
+                        <button onclick="toggleShopItem('makerBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Old Bird Skin:</label>
+                        <button onclick="toggleShopItem('oldBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Gay Bird Skin:</label>
+                        <button onclick="toggleShopItem('gayBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Green Bird Skin:</label>
+                        <button onclick="toggleShopItem('greenBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Red Bird Skin:</label>
+                        <button onclick="toggleShopItem('redBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Admin Bird Skin:</label>
+                        <button onclick="toggleShopItem('adminBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Jule Bird Skin:</label>
+                        <button onclick="toggleShopItem('juleBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Jones Bird Skin:</label>
+                        <button onclick="toggleShopItem('jonesBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Monster Bird Skin:</label>
+                        <button onclick="toggleShopItem('monsterBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Primo Bird Skin:</label>
+                        <button onclick="toggleShopItem('primoBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Omirp Bird Skin:</label>
+                        <button onclick="toggleShopItem('omirpBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Neerg Bird Skin:</label>
+                        <button onclick="toggleShopItem('neergBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Dansk Bird Skin:</label>
+                        <button onclick="toggleShopItem('danskBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Pixil Bird Skin:</label>
+                        <button onclick="toggleShopItem('pixilBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Owner Bird Skin:</label>
+                        <button onclick="toggleShopItem('ownerBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Invisible Bird Skin:</label>
+                        <button onclick="toggleShopItem('invisibleBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Countryball Bird Skin:</label>
+                        <button onclick="toggleShopItem('countryballBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Poland Bird Skin:</label>
+                        <button onclick="toggleShopItem('polandBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Pixil2 Bird Skin:</label>
+                        <button onclick="toggleShopItem('pixil2BirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Pixil3 Bird Skin:</label>
+                        <button onclick="toggleShopItem('pixil3BirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Gray Bird Skin:</label>
+                        <button onclick="toggleShopItem('grayBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">CYHN Bird Skin:</label>
+                        <button onclick="toggleShopItem('cyhnBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Uncollared Bird Skin:</label>
+                        <button onclick="toggleShopItem('uncollaredBirdSkin')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-section" style="width: 100%; margin: 10px auto; padding: 10px;">
+                <h4 style="color: #4CAF50; margin-bottom: 10px;">Upgrades Management</h4>
+                <div class="upgrade-controls" style="display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%;">
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">3X Coins:</label>
+                        <button onclick="toggleShopItem('tripleCoins')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Wider Pipe Gap:</label>
+                        <button onclick="toggleShopItem('widerPipeGap')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Slower Pipes:</label>
+                        <button onclick="toggleShopItem('slowerPipes')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Lower Gravity:</label>
+                        <button onclick="toggleShopItem('lowerGravity')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                    <div class="control-item" style="background: #2d2d2d; padding: 15px; border-radius: 8px;">
+                        <label style="color: #fff;">Second Chance:</label>
+                        <button onclick="toggleShopItem('secondChance')" style="margin: 0 5px; background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Toggle Visibility</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this after the shop control panel div -->
+    <div id="giftPanel" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; background: #1a1a1a; z-index: 9999; color: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+        <div style="position: relative;">
+            <button class="close-btn" onclick="document.getElementById('giftPanel').style.display='none'" style="position: absolute; top: 10px; right: 10px; font-size: 24px; background: none; border: none; cursor: pointer; color: white;">×</button>
+            <h3 style="text-align: center; margin-top: 10px; color: #4CAF50; font-size: 24px;">Gift Panel</h3>
+            
+            <div style="margin: 20px 0;">
+                <label style="display: block; margin-bottom: 5px;">Select Player:</label>
+                <select id="giftUsername" size="10" style="width: 100%; padding: 8px; margin-bottom: 15px; background: #333; border: 1px solid #4CAF50; color: white; border-radius: 4px; max-height: 200px; overflow-y: auto;">
+                    <!-- Players will be populated via JavaScript -->
+                </select>
+                
+                <div id="giftOptions">
+                    <label style="display: block; margin-bottom: 5px;">Select Skin:</label>
+                    <select id="giftSkin" size="10" style="width: 100%; padding: 8px; margin-bottom: 15px; background: #333; border: 1px solid #4CAF50; color: white; border-radius: 4px; max-height: 200px; overflow-y: auto;">
+                        <!-- Skins will be populated here -->
+                    </select>
+                </div>
+                
+                <button onclick="sendGift()" style="width: 100%; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Send Gift</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this after the gift panel div -->
+    <div id="coinGiftPanel" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; background: #1a1a1a; z-index: 9999; color: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+        <div style="position: relative;">
+            <button class="close-btn" onclick="document.getElementById('coinGiftPanel').style.display='none'" style="position: absolute; top: 10px; right: 10px; font-size: 24px; background: none; border: none; cursor: pointer; color: white;">×</button>
+            <h3 style="text-align: center; margin-top: 10px; color: #4CAF50; font-size: 24px;">Coin Gift Panel</h3>
+            
+            <div style="margin: 20px 0;">
+                <label style="display: block; margin-bottom: 5px;">Select Player:</label>
+                <select id="coinGiftUsername" size="10" style="width: 100%; padding: 8px; margin-bottom: 15px; background: #333; border: 1px solid #4CAF50; color: white; border-radius: 4px; max-height: 200px; overflow-y: auto;">
+                    <!-- Players will be populated via JavaScript -->
+                </select>
+                
+                <div id="coinGiftOptions">
+                    <label style="display: block; margin-bottom: 5px;">Amount:</label>
+                    <select id="coinAmount" size="10" style="width: 100%; padding: 8px; margin-bottom: 15px; background: #333; border: 1px solid #4CAF50; color: white; border-radius: 4px; max-height: 200px; overflow-y: auto;">
+                        <option value="100">100 Coins</option>
+                        <option value="500">500 Coins</option>
+                        <option value="1000">1,000 Coins</option>
+                        <option value="5000">5,000 Coins</option>
+                        <option value="10000">10,000 Coins</option>
+                        <option value="50000">50,000 Coins</option>
+                        <option value="100000">100,000 Coins</option>
+                        <option value="500000">500,000 Coins</option>
+                        <option value="1000000">1,000,000 Coins</option>
+                    </select>
+                </div>
+                
+                <button onclick="sendCoinGift()" style="width: 100%; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Send Coins</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="openShop" class="shop-button">Shop</button>
+    <button id="openLocker" class="locker-button">Locker</button>
+
+    <!-- Add this right after your game canvas -->
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+        <div class="admin-content">
+            <h2>Admin Panel - Player Skins</h2>
+            <div id="playerSkinsList"></div>
+        </div>
+    </div>
+
+<script src="fbbf.js"></script>
+<script>
+// Add the admin panel functionality
+document.addEventListener('keydown', function(event) {
+    if (event.key === '6') {
+        // Check if user is Farmjoey
+        fetch('check_admin.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.isAdmin) {
+                    toggleAdminPanel();
+                }
+            });
+    } else if (event.key === 'Escape') {
+        // Close panel on ESC key
+        const panel = document.getElementById('adminPanel');
+        if (panel.style.display === 'block') {
+            panel.style.display = 'none';
+        }
+    }
+});
+
+function toggleAdminPanel() {
+    const panel = document.getElementById('adminPanel');
+    if (panel.style.display === 'none') {
+        loadPlayerSkins();
+        panel.style.display = 'block';
+        // Add close button if it doesn't exist
+        if (!panel.querySelector('.close-btn')) {
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'close-btn';
+            closeBtn.innerHTML = '×';
+            closeBtn.onclick = () => panel.style.display = 'none';
+            panel.querySelector('.admin-content').prepend(closeBtn);
+        }
+    } else {
+        panel.style.display = 'none';
+    }
+}
+
+function loadPlayerSkins() {
+    fetch('get_all_skins.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const listDiv = document.getElementById('playerSkinsList');
+                listDiv.innerHTML = '';
+                
+                // Sort players alphabetically
+                const sortedPlayers = Object.entries(data.players).sort((a, b) => a[0].localeCompare(b[0]));
+                
+                sortedPlayers.forEach(([player, skins]) => {
+                    const playerDiv = document.createElement('div');
+                    playerDiv.className = 'player-entry';
+                    
+                    // Filter and format skin names
+                    const skinsList = Object.entries(skins)
+                        .filter(([skin, owned]) => owned)
+                        .map(([skin]) => {
+                            // Remove 'BirdSkin' and format the name
+                            return skin.replace('BirdSkin', '')
+                                     .replace(/([A-Z])/g, ' $1') // Add space before capitals
+                                     .trim(); // Remove extra spaces
+                        })
+                        .sort() // Sort skins alphabetically
+                        .join(', ');
+                    
+                    playerDiv.innerHTML = `
+                        <strong>${player}</strong>
+                        <div class="skin-list">${skinsList || 'No skins'}</div>
+                    `;
+                    
+                    listDiv.appendChild(playerDiv);
+                });
+                
+                // Add total counts
+                const totalPlayers = sortedPlayers.length;
+                const statsDiv = document.createElement('div');
+                statsDiv.style.marginTop = '20px';
+                statsDiv.style.padding = '10px';
+                statsDiv.style.borderTop = '1px solid #4CAF50';
+                statsDiv.innerHTML = `
+                    <strong style="color: #4CAF50">Statistics:</strong>
+                    <div>Total Players: ${totalPlayers}</div>
+                `;
+                listDiv.appendChild(statsDiv);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading player skins:', error);
+            const listDiv = document.getElementById('playerSkinsList');
+            listDiv.innerHTML = '<div style="color: red">Error loading player data</div>';
+        });
+}
+</script>
+  </body>
+</html>

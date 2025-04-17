@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/J.png?v=1729529423952"
+    />
+    <title>Login - FJgames</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <header class="header">
+        <nav class="navbar">
+          <div class="hamburger" id="hamburger">&#9776;</div>
+          <span class="login" id="user-info">
+            <a class="login" href="/login.html" class="login-btn">Login</a>
+            <a class="login" href="/signup.html" class="signup-btn">Sign up</a>
+          </span>
+          <div class="nav-links" id="nav-links">
+            <div class="casual-games">
+              <div class="games-grid">
+                <div class="game-card" onclick="window.location.href='.'">
+                  <h3>Home</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='fbbf.html'">
+                  <h3>Flappy Bird</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='ttt.html'">
+                  <h3>Tic Tac Toe</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='gtn.html'">
+                  <h3>Guess the Number</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='wg.html'">
+                  <h3>Wordle Game</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='rps.html'">
+                  <h3>Rock Paper Scissors</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='mg.html'">
+                  <h3>Memory Game</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='casino.html'">
+                <h3>Casino</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='trading.html'">
+                <h3>Gift</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='settings.html'">
+                <h3>Settings</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <div class="login-form">
+      <h2>Login</h2>
+      <form action="login.php" method="POST">
+        <div class="error-message">
+          <!-- Her kan du vise fejlbeskeder ved behov -->
+          <?php if (isset($_GET['error'])): ?>
+            <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+          <?php endif; ?>
+        </div>
+        <input type="text" name="username" placeholder="Brugernavn" required />
+        <input type="password" name="password" placeholder="Adgangskode" required />
+        <button type="submit">Login</button>
+      </form>
+
+
+
+      <p class="p">Har du ikke en konto? <a href="signup.html">Opret en konto</a></p>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/J.png?v=1729529423952" />
+    <title>Casino - FJgame</title>
+    <link rel="stylesheet" href="casino.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+          <div class="hamburger" id="hamburger">&#9776;</div>
+          <span class="login" id="user-info">
+            <a class="login" href="/login.html" class="login-btn">Login</a>
+            <a class="login" href="/signup.html" class="signup-btn">Sign up</a>
+          </span>
+          <div class="nav-links" id="nav-links">
+            <div class="casual-games">
+              <div class="games-grid">
+                <div class="game-card" onclick="window.location.href='.'">
+                  <h3>Home</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='fbbf.html'">
+                  <h3>Flappy Bird</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='ttt.html'">
+                  <h3>Tic Tac Toe</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='gtn.html'">
+                  <h3>Guess the Number</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='wg.html'">
+                  <h3>Wordle Game</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='rps.html'">
+                  <h3>Rock Paper Scissors</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='mg.html'">
+                  <h3>Memory Game</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='casino.html'">
+                <h3>Casino</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='trading.html'">
+                <h3>Gift</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='settings.html'">
+                <h3>Settings</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <div class="casino-container">
+        <h1>Welcome to the Casino</h1>
+        <div id="coinsDisplay" class="coins-display">
+            <span>Your Coins:</span>
+            <span id="gamblingCoinsDisplay">0</span>
+        </div>
+        
+        <div class="casino-games-grid">
+            <!-- Slot Machine -->
+            <div class="casino-game-container">
+                <h2>Slot Machine</h2>
+                <div class="slot-machine">
+                    <div class="wheels">
+                        <div class="wheel" id="wheel1">7</div>
+                        <div class="wheel" id="wheel2">7</div>
+                        <div class="wheel" id="wheel3">7</div>
+                    </div>
+                    <div class="bet-controls">
+                        <input type="number" id="betAmount" min="100" step="100" value="100" />
+                        <button id="spinButton">SPIN!</button>
+                    </div>
+                    <div class="winning-info">
+                        <p>Winnings:</p>
+                        <ul>
+                            <li>777 = 10x</li>
+                            <li>💎💎💎 = 6x</li>
+                            <li>⭐⭐⭐ = 4x</li>
+                            <li>🍀🍀🍀 = 3x</li>
+                            <li>🍒🍒🍒 = 2x</li>
+                            <li>🍋🍋🍋 = 1.5x</li>
+                            <li>Diamond Pair = 1.5x</li>
+                            <li>Star Pair = 1.2x</li>
+                            <li>Any Pair = 1.1x</li>
+                        </ul>
+                    </div>
+                    <p id="slotResult" class="game-result"></p>
+                </div>
+            </div>
+
+            <!-- Dice Game -->
+            <div class="casino-game-container">
+                <h2>Dice Game</h2>
+                <div class="dice-game">
+                    <div class="dice">
+                        <div class="die" id="dice1">1</div>
+                        <div class="die" id="dice2">1</div>
+                    </div>
+                    <div class="bet-controls">
+                        <input type="number" id="diceBet" min="100" step="100" value="100" placeholder="Bet Amount" />
+                        <input type="number" id="diceGuess" min="2" max="12" value="7" placeholder="Guess (2-12)" />
+                        <button id="rollButton">ROLL!</button>
+                    </div>
+                    <div class="winning-info">
+                        <p>Winnings:</p>
+                        <ul>
+                            <li>Exact guess = 4x</li>
+                            <li>Off by 1 = 2x</li>
+                        </ul>
+                    </div>
+                    <p id="diceResult" class="game-result"></p>
+                </div>
+            </div>
+
+            <!-- Coin Flip -->
+            <div class="casino-game-container">
+                <h2>Coin Flip</h2>
+                <div class="coin-flip">
+                    <div id="coin" class="coin">
+                        <div class="heads">H</div>
+                        <div class="tails">T</div>
+                    </div>
+                    <div class="bet-controls">
+                        <input type="number" id="coinBet" min="100" step="100" value="100" placeholder="Bet Amount" />
+                        <select id="coinChoice">
+                            <option value="heads">Heads</option>
+                            <option value="tails">Tails</option>
+                        </select>
+                        <button id="flipButton">FLIP!</button>
+                    </div>
+                    <div class="winning-info">
+                        <p>Winnings:</p>
+                        <ul>
+                            <li>Correct guess = 2x</li>
+                        </ul>
+                    </div>
+                    <p id="coinResult" class="game-result"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="casino.js"></script>
+</body>
+</html> 

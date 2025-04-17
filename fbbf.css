@@ -1,0 +1,1799 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #2b2b2b !important;
+    font-weight: 600;
+    text-align: center !important;
+    color: white;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  canvas {
+    background-color: #70c5ce;
+    border: 0px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  #hackMenu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 200px;
+    padding: 10px;
+    background-color: #3b3b3b;
+    color: white;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+  #hackMenu button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .keybind-input {
+    margin-top: 5px;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  * {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .header {
+  position: fixed;
+  top: 0; /* Footer placement */
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  background-color: #333; /* Background color for visibility */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Ensure full width */
+}
+
+.hamburger {
+  display: none; /* Hidden on larger screens */
+  font-size: 30px; /* Size of hamburger icon */
+  cursor: pointer; /* Pointer on hover */
+}
+
+.nav-links {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 15px;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links a {
+  padding: 10px; /* Adjust padding to suit your design */
+  white-space: nowrap; /* Prevents text from wrapping */
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 35px; /* Space between links */
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #cfcfcf;
+}
+
+  .header {
+    background-color: transparent; /* Make header transparent on mobile */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger on smaller screens */
+  }
+
+  .nav-links {
+    display: none; /* Hide links by default */
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center items */
+    width: 100%; /* Full width for mobile */
+    position: absolute; /* Position it absolutely */
+    top: 70px; /* Position it above the header */
+    left: 0; /* Align to the left */
+    background-color: #333; /* Background for links */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show links when active */
+  }
+
+  .nav-links a {
+    margin: 10px 0; /* Vertical spacing between links */
+    margin-left: 0; /* Remove left margin for vertical layout */
+  }
+
+.login {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+    margin-left: 15px; /* Space between links */
+}
+
+.casual-games h2 {
+  font-size: 24px;
+  color: #3b3b3b;
+  margin-left: 20px;
+}
+
+/* Game Card Grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.game-card {
+  background-color: #3b3b3b;
+  border-radius: 8px;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  background-color: #4a4a4a;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.game-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+}
+
+.casual-games h2 {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #fff;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+  .games-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+      display: block;
+  }
+  
+  .games-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+  }
+  
+  .game-card {
+      padding: 10px;
+      min-height: 45px;
+  }
+  
+  .game-card h3 {
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .games-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 8px;
+  }
+  
+  .game-card {
+      padding: 8px;
+      min-height: 40px;
+  }
+  
+  .game-card h3 {
+      font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .games-grid {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 6px;
+  }
+  
+  .game-card {
+      padding: 8px;
+      min-height: 35px;
+  }
+  
+  .game-card h3 {
+      font-size: 12px;
+  }
+}
+
+.nav-profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 2px solid #4CAF50;
+    vertical-align: middle;
+}
+
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} 
+  
+  .shop-button {
+   position: fixed;
+   top: 50px;
+   left: 20px;
+    margin: 0;
+    padding: 0.8em 1em;
+    outline: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    background-color: #333;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: inherit;
+    z-index: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+  
+  .shop-button:hover {
+    animation: sh0 0.5s ease-in-out both;
+  }
+  
+  @keyframes sh0 {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  
+    25% {
+      transform: rotate(7deg) translate3d(0, 0, 0);
+    }
+  
+    50% {
+      transform: rotate(-7deg) translate3d(0, 0, 0);
+    }
+  
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+  
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+  
+  .shop-button:hover span {
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+  }
+  
+  .shop-button::before,
+  .shop-button::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0;
+    transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+    z-index: -1;
+    transform: translate(100%, -25%) translate3d(0, 0, 0);
+  }
+  
+  .shop-button:hover::before,
+  .shop-button:hover::after {
+    opacity: 0.15;
+    transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+  
+  .shop-button:hover::before {
+    transform: translate3d(50%, 0, 0) scale(0.9);
+  }
+  
+  .shop-button:hover::after {
+    transform: translate(50%, 0) scale(1.1);
+  }
+  
+  
+  
+  
+  .shop-menu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 20px;
+    background-color: #3b3b3b;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    z-index: 1001;
+  }
+  
+  .shop-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .shop-item {
+    position: relative;
+    background-color: #4b4b4b;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.2s ease;
+  }
+  
+  .shop-item:hover {
+    transform: translateY(-2px);
+  }
+  
+  .shop-item h4 {
+    margin: 0 0 5px 0;
+    color: #4CAF50;
+  }
+  
+  .shop-item p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .shop-item button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .shop-item button:hover {
+    background-color: #45a049;
+  }
+  
+  .shop-item button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  #closeShop {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  #closeShop:hover {
+    background-color: #da190b;
+  }
+  
+  /* Add these styles for the special pack */
+  .special-pack {
+    background-color: #553c9a !important;
+    border: 2px solid #8b5cf6;
+  }
+  
+  .special-pack h4 {
+    color: #8b5cf6 !important;
+  }
+  
+  .special-pack ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+  }
+  
+  .special-pack li {
+    padding: 2px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .special-pack li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+  }
+  
+  .savings-text {
+      color: #4CAF50 !important;
+      font-weight: bold;
+      font-size: 16px !important;
+      margin-top: -5px !important;
+  }
+  
+  .shop-coins {
+      background-color: #4b4b4b;
+      padding: 12px;
+      border-radius: 5px;
+      margin: 10px 0 20px 0;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #4CAF50;
+  }
+  
+  .sh2 {
+    color: #ff3d3d;
+  }
+  
+  .gambling-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 15px;
+    background-color: #3b3b3b;
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+    color: white;
+    z-index: 1000;
+    width: 300px;
+  }
+  
+  .gambling-bar h3 {
+    margin: 0 0 15px 0;
+    color: #ff9800;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .slot-machine {
+    background: #2b2b2b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .wheels {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .wheel {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border: 3px solid #ff9800;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2b2b2b;
+    transition: transform 0.5s ease-out;
+  }
+  
+  .wheel.spinning {
+    transform: translateY(-5px);
+  }
+  
+  .bet-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  #betAmount {
+    flex: 1;
+    width: 50px;
+    padding: 8px;
+    border: 1px solid #ff9800;
+    border-radius: 5px;
+    background-color: #2b2b2b;
+    color: white;
+    font-size: 16px;
+  }
+  
+  #spinButton {
+    padding: 8px 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  #spinButton:hover {
+    background-color: #f57c00;
+  }
+  
+  #spinButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .winning-info {
+    background: #2b2b2b;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .winning-info p {
+    margin: 0 0 5px 0;
+    color: #ff9800;
+    font-weight: bold;
+  }
+  
+  .winning-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .winning-info li {
+    margin: 5px 0;
+  }
+  
+  #gamblingResult {
+    margin: 10px 0 0 0;
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px;
+  }
+  
+  /* Add these styles for the coins display */
+  .coins-display {
+    background: #2b2b2b;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ff9800;
+  }
+  
+  .coins-display span:first-child {
+    color: #ff9800;
+    font-weight: bold;
+  }
+  
+  #gamblingCoinsDisplay {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4CAF50;
+  }
+  
+  @media screen and (max-height: 800px) {
+      .shop-menu {
+          transform: translate(-50%, -50%) scale(0.8);
+          max-height: 90vh;
+          overflow-y: auto;
+      }
+  
+      .gambling-bar {
+          transform: scale(0.8);
+          transform-origin: bottom left;
+          bottom: 10px;
+          left: 10px;
+      }
+  }
+  
+  @media screen and (max-height: 600px) {
+      .shop-menu {
+          transform: translate(-50%, -50%) scale(0.7);
+          max-height: 90vh;
+          overflow-y: auto;
+      }
+  
+      .gambling-bar {
+          transform: scale(0.7);
+          transform-origin: bottom left;
+          bottom: 5px;
+          left: 5px;
+      }
+  }
+  
+  @media screen and (max-width: 480px) {
+      .shop-menu {
+          width: 90%;
+          max-width: 300px;
+          padding: 15px;
+      }
+  }
+  
+  .inventory {
+      background-color: #4b4b4b;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 15px 0;
+  }
+  
+  .inventory h3 {
+      color: #4CAF50;
+      margin: 0 0 10px 0;
+  }
+  
+  #upgradesList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+  
+  .upgrade-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      margin: 5px 0;
+      background-color: #3b3b3b;
+      border-radius: 3px;
+  }
+  
+  .toggle-btn {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      min-width: 80px;
+  }
+  
+  .toggle-btn.disabled {
+      background-color: #ff3d3d;
+      color: white;
+  }
+  
+  /* Add hover effects */
+  .toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .toggle-btn.disabled:hover {
+      background-color: #ff2020;
+  }
+  
+  /* Add active state */
+  .toggle-btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+  }
+  
+  /* Add a small indicator dot */
+  .toggle-btn::before {
+      content: "•";
+      margin-right: 5px;
+      color: white;
+  }
+  
+  .toggle-btn.disabled::before {
+      color: rgba(255,255,255,0.5);
+  }
+  
+  .upgrade-name {
+      flex-grow: 1;
+      text-align: left;
+      margin-right: 10px;
+  }
+  
+  .inventory-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+  }
+  
+  .inventory-btn {
+      background-color: #3b3b3b;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      flex: 1;
+  }
+  
+  .inventory-btn:hover {
+      background-color: #4b4b4b;
+  }
+  
+  .game-container {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: center;
+      margin-top: 80px; /* Add space for the header */
+  }
+  
+  .side-inventory {
+      display: none;
+      background-color: #3b3b3b;
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .side-inventory h3 {
+      color: #4CAF50;
+      margin: 0 0 20px 0;
+      text-align: center;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .side-inventory h3:first-child {
+      margin-top: 0;
+  }
+  
+  #sideUpgradesList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+  
+  .upgrade-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #3b3b3b;
+      border-radius: 5px;
+  }
+  
+  .toggle-btn {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+  }
+  
+  .toggle-btn.disabled {
+      background-color: #666;
+  }
+  
+  /* Update existing styles to work with new layout */
+  body {
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      background: #2b2b2b;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+  }
+  
+  /* Add responsive design for smaller screens */
+  @media screen and (max-width: 1024px) {
+      .games-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+          padding: 12px;
+      }
+  }
+  
+  @media screen and (max-width: 768px) {
+      .games-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+          padding: 10px;
+      }
+      
+      .game-card {
+          padding: 10px;
+          min-height: 45px;
+      }
+      
+      .game-card h3 {
+          font-size: 14px;
+      }
+  }
+  
+  @media screen and (max-width: 480px) {
+      .games-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+          padding: 8px;
+      }
+      
+      .game-card {
+          padding: 8px;
+          min-height: 40px;
+      }
+      
+      .game-card h3 {
+          font-size: 13px;
+      }
+  }
+  
+  @media screen and (max-width: 320px) {
+      .games-grid {
+          grid-template-columns: 1fr;
+          gap: 6px;
+          padding: 6px;
+      }
+      
+      .game-card {
+          padding: 8px;
+          min-height: 35px;
+      }
+      
+      .game-card h3 {
+          font-size: 12px;
+      }
+  }
+  
+  /* Update the toggle buttons styling */
+  .toggle-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      background-color: #45a049;
+  }
+  
+  .toggle-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .toggle-btn.disabled {
+      background-color: #ff3d3d;
+  }
+  
+  .toggle-btn.disabled:hover {
+      background-color: #ff2424;
+  }
+  
+  /* Style the Toggle All Upgrades button */
+  #toggleAllUpgrades {
+      width: 100%;
+      padding: 10px;
+      background-color: #7e57c2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  #toggleAllUpgrades:hover {
+      background-color: #673ab7;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  #toggleAllUpgrades:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Update the upgrade items styling */
+  .upgrade-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      margin: 8px 0;
+      background-color: #2b2b2b;
+      border-radius: 5px;
+      transition: transform 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upgrade-item:hover {
+      transform: translateX(5px);
+      background-color: #333;
+  }
+  
+  .upgrade-name {
+      flex-grow: 1;
+      text-align: left;
+      margin-right: 15px;
+      font-size: 14px;
+      color: #fff;
+      font-weight: 500;
+  }
+  
+  /* Update side inventory styling */
+  .side-inventory {
+      background-color: #3b3b3b;
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .side-inventory h3 {
+      color: #4CAF50;
+      margin: 0 0 20px 0;
+      text-align: center;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Add a scrollbar style for the upgrades list */
+  #upgradesList {
+      max-height: 300px;
+      overflow-y: auto;
+      padding-right: 5px;
+  }
+  
+  #upgradesList::-webkit-scrollbar {
+      width: 8px;
+  }
+  
+  #upgradesList::-webkit-scrollbar-track {
+      background: #2b2b2b;
+      border-radius: 4px;
+  }
+  
+  #upgradesList::-webkit-scrollbar-thumb {
+      background: #4CAF50;
+      border-radius: 4px;
+  }
+  
+  #upgradesList::-webkit-scrollbar-thumb:hover {
+      background: #45a049;
+  }
+  
+  /* Update the button styles */
+  .upgrade-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .upgrade-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      background-color: #45a049;
+  }
+  
+  .upgrade-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .upgrade-btn:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+      transform: none;
+  }
+  
+  .upgrade-btn.active {
+      background-color: #ff3d3d;
+  }
+  
+  .upgrade-btn.active:hover {
+      background-color: #ff2424;
+  }
+  
+  /* Update shop item styling */
+  .shop-item {
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .shop-item .upgrade-btn {
+      width: 100%;
+      margin-top: 10px;
+  }
+  
+  /* Keep the special pack button separate */
+  #buyAllPack {
+      width: 100%;
+      padding: 10px;
+      background-color: #7e57c2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      margin-top: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  #buyAllPack:hover:not(:disabled) {
+      background-color: #673ab7;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  #buyAllPack:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  #buyAllPack:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+  }
+  
+  /* Update the upgrade button styles */
+  .upgrade-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .upgrade-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      background-color: #45a049;
+  }
+  
+  .upgrade-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style for purchased upgrades */
+  .upgrade-btn.purchased {
+      background-color: #808080;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+  }
+  
+  .upgrade-btn.purchased:hover {
+      background-color: #808080;
+      transform: none;
+      box-shadow: none;
+  }
+  
+  /* Style for enabled/disabled state of purchased upgrades */
+  .upgrade-btn.purchased.enabled {
+      background-color: #4CAF50;
+      cursor: pointer;
+  }
+  
+  .upgrade-btn.purchased.disabled {
+      background-color: #ff3d3d;
+      cursor: pointer;
+  }
+  
+  /* Style for the buy buttons */
+  .upgrade-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .upgrade-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      background-color: #45a049;
+  }
+  
+  .upgrade-btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style for purchased buttons */
+  .upgrade-btn.purchased {
+      background-color: #808080;
+      color: #ffffff;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+  }
+  
+  .upgrade-btn.purchased:hover {
+      background-color: #808080;
+      transform: none;
+      box-shadow: none;
+  }
+  
+  /* Style for the all-in-one pack button when purchased */
+  #buyAllPack:disabled {
+      background-color: #808080;
+      color: #ffffff;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      opacity: 0.8;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media screen and (max-width: 700px) {
+      .shop-menu {
+          width: 90%;
+          max-width: 600px;
+      }
+      
+      .shop-items {
+          grid-template-columns: 1fr;
+      }
+  }
+  
+  /* Make the special pack span full width */
+  .shop-item.special-pack {
+      grid-column: 1 / -1;
+  }
+  
+  .skins-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+      background-color: #2b2b2b;
+      border-radius: 8px;
+  }
+  
+  .skin-item {
+      position: relative;
+      aspect-ratio: 1;
+      background-color: #3b3b3b;
+      border-radius: 8px;
+      cursor: pointer;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+  }
+  
+  .skin-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .skin-item.selected {
+      border-color: #4CAF50;
+      background-color: #4b4b4b;
+  }
+  
+  .skin-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+  }
+  
+  .skin-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .skin-item:hover .skin-overlay {
+      display: flex;
+  }
+  
+  .skin-item.selected .skin-overlay {
+      display: flex;
+      background: rgba(76, 175, 80, 0.2);
+  }
+  
+  .checkmark {
+      color: #4CAF50;
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+  .skin-item.locked {
+      opacity: 0.7;
+      cursor: not-allowed;
+  }
+  
+  .skin-item.locked::after {
+      content: "🔒";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: white;
+  }
+  
+  #shopControlPanel {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #2b2b2b;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      max-width: 500px;
+      width: 90%;
+      z-index: 1000;
+      color: white;
+  }
+  
+  #shopControlPanel h3 {
+      color: #4CAF50;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+  }
+  
+  .control-section {
+      background-color: #3b3b3b;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+  }
+  
+  .control-section h4 {
+      color: #4CAF50;
+      margin-bottom: 15px;
+      font-size: 18px;
+      text-align: center;
+  }
+  
+  .control-item {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #444;
+      border-radius: 5px;
+  }
+  
+  .control-item label {
+      color: white;
+      font-size: 14px;
+  }
+  
+  .control-item input[type="number"] {
+      width: 100px;
+      padding: 5px;
+      border: none;
+      border-radius: 3px;
+      background-color: #555;
+      color: white;
+  }
+  
+  .control-item button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 12px;
+      white-space: nowrap;
+  }
+  
+  .control-item button:hover {
+      background-color: #45a049;
+  }
+  
+  .control-item button:last-child {
+      background-color: #2196F3;
+  }
+  
+  .control-item button:last-child:hover {
+      background-color: #1976D2;
+  }
+  
+  @media screen and (max-width: 600px) {
+      .control-item {
+          grid-template-columns: 1fr;
+      }
+      
+      .control-item input[type="number"] {
+          width: 100%;
+      }
+  }
+  
+  /* Add a close button */
+  #shopControlPanel .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 5px;
+  }
+  
+  #shopControlPanel .close-btn:hover {
+      color: #4CAF50;
+  }
+  
+  .locker-button {
+   position: fixed;
+   top: 110px;
+   left: 20px;
+    margin: 0;
+    padding: 0.8em 1em;
+    outline: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    background-color: #333;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: inherit;
+    z-index: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+  
+  .locker-button:hover {
+    animation: sh0 0.5s ease-in-out both;
+  }
+  
+  @keyframes sh0 {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  
+    25% {
+      transform: rotate(7deg) translate3d(0, 0, 0);
+    }
+  
+    50% {
+      transform: rotate(-7deg) translate3d(0, 0, 0);
+    }
+  
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+  
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+  
+  .locker-button:hover span {
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+  }
+  
+  .locker-button::before,
+  .locker-button::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0;
+    transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+    z-index: -1;
+    transform: translate(100%, -25%) translate3d(0, 0, 0);
+  }
+  
+  .locker-button:hover::before,
+  .locker-button:hover::after {
+    opacity: 0.15;
+    transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+  
+  .locker-button:hover::before {
+    transform: translate3d(50%, 0, 0) scale(0.9);
+  }
+  
+  .locker-button:hover::after {
+    transform: translate(50%, 0) scale(1.1);
+  }
+  
+  
+  .leaderboard {
+      background-color: #3b3b3b;
+      padding: 20px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 20px;
+  }
+  
+  .leaderboard h3 {
+      color: #4CAF50;
+      margin: 0 0 20px 0;
+      text-align: center;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  #leaderboardList {
+      width: 300px; /* Set fixed width for the leaderboard */
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+  }
+  
+  #leaderboardList li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #2b2b2b;
+      border-radius: 5px;
+      color: #fff;
+  }
+  
+  #leaderboardList li .player-name {
+      font-weight: bold;
+  }
+  
+  #leaderboardList li .player-score {
+      color: #4CAF50;
+  }
+  
+  /* Add styles for the Invisible Bird skin */
+  .skin-item[data-skin="invisibleBirdSkin"] img {
+      opacity: 0.5;
+  }
+  
+  /* Update the gift panel select styles */
+  #giftUsername {
+      max-height: 200px;
+      overflow-y: auto;
+      display: block;  /* Make it always show as a list */
+      size: 10;  /* Show 10 items at a time */
+  }
+  
+  #giftUsername option {
+      padding: 8px;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+  }
+  
+  #giftUsername option:hover {
+      background-color: #4CAF50;
+      color: white;
+  }
+  
+  /* Custom scrollbar styles */
+  #giftUsername::-webkit-scrollbar {
+      width: 8px;
+  }
+  
+  #giftUsername::-webkit-scrollbar-track {
+      background: #2b2b2b;
+      border-radius: 4px;
+  }
+  
+  #giftUsername::-webkit-scrollbar-thumb {
+      background: #4CAF50;
+      border-radius: 4px;
+  }
+  
+  #giftUsername::-webkit-scrollbar-thumb:hover {
+      background: #45a049;
+  }
+  
+  /* Add styles for the skin selection */
+  #giftSkin {
+      max-height: 200px;
+      overflow-y: auto;
+      display: block;
+      size: 10;
+  }
+  
+  #giftSkin option {
+      padding: 8px;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+  }
+  
+  #giftSkin option:hover {
+      background-color: #4CAF50;
+      color: white;
+  }
+  
+  /* Custom scrollbar styles for skin selection */
+  #giftSkin::-webkit-scrollbar {
+      width: 8px;
+  }
+  
+  #giftSkin::-webkit-scrollbar-track {
+      background: #2b2b2b;
+      border-radius: 4px;
+  }
+  
+  #giftSkin::-webkit-scrollbar-thumb {
+      background: #4CAF50;
+      border-radius: 4px;
+  }
+  
+  #giftSkin::-webkit-scrollbar-thumb:hover {
+      background: #45a049;
+  }
+  
+  #skinList {
+      height: 200px !important;
+      display: none;
+  }
+  
+  #skinList option {
+      padding: 8px;
+      cursor: pointer;
+  }
+  
+  #skinList option:hover {
+      background-color: #4CAF50;
+      color: white;
+  }
+  
+  /* Admin Panel Styles */
+  .admin-panel {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      z-index: 1000;
+      max-width: 80%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 2px solid #4CAF50;
+  }
+  
+  .admin-content {
+      color: white;
+  }
+  
+  .admin-content h2 {
+      color: #4CAF50;
+      margin-bottom: 20px;
+      text-align: center;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 10px;
+  }
+  
+  #playerSkinsList {
+      display: grid;
+      gap: 10px;
+      padding: 10px;
+  }
+  
+  .player-entry {
+      background: #2d2d2d;
+      padding: 15px;
+      border-radius: 4px;
+      transition: transform 0.2s;
+      border: 1px solid #333;
+  }
+  
+  .player-entry:hover {
+      transform: translateX(5px);
+      border-color: #4CAF50;
+  }
+  
+  .player-entry strong {
+      color: #4CAF50;
+      font-size: 1.1em;
+      display: block;
+      margin-bottom: 5px;
+  }
+  
+  .skin-list {
+      color: #FFD700;
+      margin-left: 20px;
+      font-size: 0.9em;
+      line-height: 1.4;
+  }
+  
+  /* Close button */
+  .admin-panel .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 5px;
+      transition: color 0.3s;
+  }
+  
+  .admin-panel .close-btn:hover {
+      color: #4CAF50;
+  }
+  
+  /* Scrollbar styling */
+  .admin-panel::-webkit-scrollbar {
+      width: 8px;
+  }
+  
+  .admin-panel::-webkit-scrollbar-track {
+      background: #1a1a1a;
+  }
+  
+  .admin-panel::-webkit-scrollbar-thumb {
+      background: #4CAF50;
+      border-radius: 4px;
+  }
+  
+  .admin-panel::-webkit-scrollbar-thumb:hover {
+      background: #45a049;
+  }
+  
+  .leaderboard-entry {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px;
+  }
+  
+  .leaderboard-profile-pic {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #4CAF50;
+  }
+  
+  .player-name {
+      flex: 1;
+      text-align: left;
+      white-space: nowrap; /* Prevent name from wrapping */
+      overflow: hidden; /* Hide overflow */
+      text-overflow: ellipsis; /* Show ... for long names */
+  }
+  
+  .player-score {
+      margin-left: auto;
+      font-weight: bold;
+      color: #4CAF50; /* Make score stand out */
+  }
+  
+  

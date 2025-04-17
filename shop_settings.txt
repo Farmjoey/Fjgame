@@ -1,0 +1,142 @@
+{
+  "blueBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "makerBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "revive": {
+    "visible": true,
+    "price": 25000
+  },
+  "oldBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "skyBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "gayBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "widerPipeGap": {
+    "visible": false,
+    "price": 10000
+  },
+  "slowerPipes": {
+    "visible": false,
+    "price": 10000
+  },
+  "lowerGravity": {
+    "visible": false,
+    "price": 10000
+  },
+  "greenBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "redBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "adminBirdSkin": {
+    "visible": false,
+    "price": 100000
+  },
+  "juleBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "jonesBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "monsterBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "primoBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "omirpBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "neergBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "danskBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "pixilBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "ownerBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "invisibleBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "tripleCoins": {
+    "visible": true,
+    "price": 100000
+  },
+  "countryballBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "polandBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "pixil2BirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "pixil3BirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "grayBirdSkin": {
+    "visible": false,
+    "price": 50000
+  },
+  "cyhnBirdSkin": {
+    "visible": true,
+    "price": 50000
+  },
+  "uncollaredBirdSkin": {
+    "visible": true,
+    "price": 50000
+  },
+  "secondChance": {
+    "visible": true,
+    "price": 75000
+  },
+  "winner2BirdSkin": {
+    "visible": true,
+    "price": 1000
+  },
+  "countryballMakerBirdSkin": {
+    "visible": true,
+    "price": 50000
+  },
+  "greenV2BirdSkin": {
+    "visible": true,
+    "price": 50000
+  },
+  "notAdminBirdSkin": {
+    "visible": true,
+    "price": 100000
+  }
+}

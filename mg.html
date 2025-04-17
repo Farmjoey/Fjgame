@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/J.png?v=1729529423952"
+    />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="mg.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+          <div class="hamburger" id="hamburger">&#9776;</div>
+          <span class="login" id="user-info">
+            <a class="login" href="/login.html" class="login-btn">Login</a>
+            <a class="login" href="/signup.html" class="signup-btn">Sign up</a>
+          </span>
+          <div class="nav-links" id="nav-links">
+            <div class="casual-games">
+              <div class="games-grid">
+                <div class="game-card" onclick="window.location.href='.'">
+                  <h3>Home</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='fbbf.html'">
+                  <h3>Flappy Bird</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='ttt.html'">
+                  <h3>Tic Tac Toe</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='gtn.html'">
+                  <h3>Guess the Number</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='wg.html'">
+                  <h3>Wordle Game</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='rps.html'">
+                  <h3>Rock Paper Scissors</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='mg.html'">
+                  <h3>Memory Game</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='casino.html'">
+                <h3>Casino</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='trading.html'">
+                <h3>Gift</h3>
+                </div>
+                <div class="game-card" onclick="window.location.href='settings.html'">
+                <h3>Settings</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+<h1>Memory Game</h1>
+<div id="attemptCounter">Attempts: 0</div> <!-- Display for attempts -->
+<div class="game-board" id="gameBoard"></div>
+<button id="resetButton">Reset Game</button>
+<div id="completionMessage" class="completion-message">
+    <div class="message-content">
+        <h2>Congratulations!</h2>
+        <p>You completed the game in <span id="finalAttempts">0</span> attempts!</p>
+    </div>
+</div>
+<div class="coins-container">
+    <div class="coins-display">
+        Coins: <span id="coinsDisplay">0</span>
+        <span id="coinsWonDisplay" class="coins-won">+0</span>
+    </div>
+</div>
+    <script src="mg.js"></script>
+</body>
+</html>

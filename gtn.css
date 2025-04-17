@@ -1,0 +1,333 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #2b2b2b !important;
+  font-weight: 600;
+  text-align: center !important;
+  color: white;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.game-container {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input[type="number"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 100px;
+  margin-bottom: 10px; /* Added margin-bottom for spacing */
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3b3b3b;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #03DA51;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+#restartButton {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.header {
+  position: fixed;
+  top: 0; /* Footer placement */
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  background-color: #333; /* Background color for visibility */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Ensure full width */
+}
+
+.hamburger {
+  display: none; /* Hidden on larger screens */
+  font-size: 30px; /* Size of hamburger icon */
+  cursor: pointer; /* Pointer on hover */
+}
+
+.nav-links {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 15px;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links a {
+  padding: 10px; /* Adjust padding to suit your design */
+  white-space: nowrap; /* Prevents text from wrapping */
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 35px; /* Space between links */
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #cfcfcf;
+}
+
+  .header {
+    background-color: transparent; /* Make header transparent on mobile */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger on smaller screens */
+  }
+
+  .nav-links {
+    display: none; /* Hide links by default */
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center items */
+    width: 100%; /* Full width for mobile */
+    position: absolute; /* Position it absolutely */
+    top: 70px; /* Position it above the header */
+    left: 0; /* Align to the left */
+    background-color: #333; /* Background for links */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show links when active */
+  }
+
+  .nav-links a {
+    margin: 10px 0; /* Vertical spacing between links */
+    margin-left: 0; /* Remove left margin for vertical layout */
+  }
+
+.login {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+    margin-left: 15px; /* Space between links */
+}
+
+.casual-games h2 {
+  font-size: 24px;
+  color: #3b3b3b;
+  margin-left: 20px;
+}
+
+/* Game Card Grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.game-card {
+  background-color: #3b3b3b;
+  border-radius: 8px;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  background-color: #4a4a4a;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.game-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+}
+
+.casual-games h2 {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #fff;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+  .games-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+      display: block;
+  }
+  
+  .games-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+  }
+  
+  .game-card {
+      padding: 10px;
+      min-height: 45px;
+  }
+  
+  .game-card h3 {
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .games-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 8px;
+  }
+  
+  .game-card {
+      padding: 8px;
+      min-height: 40px;
+  }
+  
+  .game-card h3 {
+      font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .games-grid {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 6px;
+  }
+  
+  .game-card {
+      padding: 8px;
+      min-height: 35px;
+  }
+  
+  .game-card h3 {
+      font-size: 12px;
+  }
+}
+
+.nav-profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 2px solid #4CAF50;
+    vertical-align: middle;
+}
+
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} 
+
+/* Add coin display styles */
+.coins-container {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.coins-display {
+    font-size: 24px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.coins-won {
+    position: absolute;
+    top: -20px;
+    right: -40px;
+    color: #4CAF50;
+    font-size: 20px;
+    display: none;
+    animation: floatUp 2s ease-out;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 100px; /* Add space for the header */
+} 

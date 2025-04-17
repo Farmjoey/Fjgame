@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Profile</title>
+              <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/J.png?v=1729529423952"
+    />
+    <link rel="stylesheet" href="settings.css">
+    <style>
+        .settings-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #2d2d2d;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .profile-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+            object-fit: cover;
+            border: 3px solid #4CAF50;
+        }
+
+        .upload-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+
+        .upload-btn:hover {
+            background: #45a049;
+        }
+
+        .save-btn {
+            background: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+
+        .save-btn:hover {
+            background: #1976D2;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .settings-header {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+          <div class="hamburger" id="hamburger">&#9776;</div>
+          <span class="login" id="user-info">
+            <a class="login" href="/login.html">Login</a>
+            <a class="login" href="/signup.html">Sign up</a>
+          </span>
+          <div class="nav-links" id="nav-links">
+            <div class="games-grid">
+              <div class="game-card" onclick="window.location.href='.'">
+                <h3>Home</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='fbbf.html'">
+                <h3>Flappy Bird</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='ttt.html'">
+                <h3>Tic Tac Toe</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='gtn.html'">
+                <h3>Guess the Number</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='wg.html'">
+                <h3>Wordle Game</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='rps.html'">
+                <h3>Rock Paper Scissors</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='mg.html'">
+                <h3>Memory Game</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='casino.html'">
+                <h3>Casino</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='trading.html'">
+                <h3>Gift</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='settings.html'">
+                <h3>Settings</h3>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    
+    <div class="settings-container">
+        <h2 class="settings-header">Profile Settings</h2>
+        
+        <div class="profile-section">
+            <img id="profilePic" class="profile-pic" src="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/sigma.png?v=1740408925158" alt="Profile Picture">
+            
+            <div>
+                <input type="file" id="fileInput" accept="image/*">
+                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">Upload New Picture</button>
+                <button class="save-btn" onclick="saveProfilePicture()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle file selection
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Check file size (limit to 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('File size too large! Please choose an image under 2MB.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profilePic').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Save profile picture
+        function saveProfilePicture() {
+            const profilePic = document.getElementById('profilePic').src;
+            
+            // Show loading state
+            const saveBtn = document.querySelector('.save-btn');
+            const originalText = saveBtn.textContent;
+            saveBtn.textContent = 'Saving...';
+            saveBtn.disabled = true;
+            
+            fetch('save_profile_pic.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    profilePic: profilePic
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Profile picture updated successfully!');
+                } else {
+                    alert('Error updating profile picture: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error saving profile picture');
+            })
+            .finally(() => {
+                // Restore button state
+                saveBtn.textContent = originalText;
+                saveBtn.disabled = false;
+            });
+        }
+
+        // Load saved profile picture on page load
+        window.addEventListener('load', function() {
+            fetch('get_profile_pic.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success' && data.profilePic) {
+                    document.getElementById('profilePic').src = data.profilePic;
+                }
+            })
+            .catch(error => console.error('Error loading profile picture:', error));
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            Promise.all([
+                fetch('session_status.php').then(res => res.json()),
+                fetch('get_profile_pic.php').then(res => res.json())
+            ])
+            .then(([sessionData, profileData]) => {
+                const userInfo = document.getElementById('user-info');
+
+                if (sessionData.loggedIn) {
+                    const profilePic = profileData.status === 'success' ? profileData.profilePic : 'https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/sigma.png?v=1740408925158';
+                    userInfo.innerHTML = `
+                        <img src="${profilePic}" alt="Profile" class="nav-profile-pic">
+                        <a class="welcome-message">Velkommen, ${sessionData.username}!</a>
+                        <a class="login" href="logout.php" class="logout-btn">Logout</a>
+                    `;
+                } else {
+                    userInfo.innerHTML = `
+                        <a class="login" href="/login.html" class="login-btn">Login</a>
+                        <a class="login" href="/signup.html" class="signup-btn">Sign up</a>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        });
+
+        // JavaScript for toggling the navigation menu on mobile
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 
