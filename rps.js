@@ -83,36 +83,6 @@ function restartGame() {
     document.getElementById("result").classList.remove("show"); // Hide result for next round
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Fetch both session status and profile picture
-  Promise.all([
-    fetch('session_status.php').then(res => res.json()),
-    fetch('get_profile_pic.php').then(res => res.json())
-  ])
-    .then(([sessionData, profileData]) => {
-      const userInfo = document.getElementById('user-info');
-
-      if (sessionData.loggedIn) {
-        // If user is logged in, show welcome message with profile pic and logout
-        const profilePic = profileData.status === 'success' ? profileData.profilePic : 'https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/sigma.png?v=1740408925158';
-        userInfo.innerHTML = `
-          <img src="${profilePic}" alt="Profile" class="nav-profile-pic">
-          <a class="welcome-message">Velkommen, ${sessionData.username}!</a>
-          <a class="login" href="logout.php" class="logout-btn">Logout</a>
-        `;
-      } else {
-        // If not logged in, show login and signup buttons
-        userInfo.innerHTML = `
-          <a class="login" href="/login.html" class="login-btn">Login</a>
-          <a class="login" href="/signup.html" class="signup-btn">Sign up</a>
-        `;
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
-});
-
 // JavaScript for toggling the navigation menu on mobile
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
@@ -158,32 +128,13 @@ function updateCoinsDisplay() {
 }
 
 function loadCoins() {
-    fetch('get_coins.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                coins = parseInt(data.coins);
-                updateCoinsDisplay();
-            }
-        })
-        .catch(error => console.error('Error loading coins:', error));
+    const storedCoins = localStorage.getItem('rps_coins');
+    coins = storedCoins ? parseInt(storedCoins) : 0;
+    updateCoinsDisplay();
 }
 
 function saveCoins() {
-    fetch('save_coins.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `coins=${coins}`
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            console.log('Coins saved successfully');
-        }
-    })
-    .catch(error => console.error('Error saving coins:', error));
+    localStorage.setItem('rps_coins', coins);
 }
 
 document.addEventListener('DOMContentLoaded', function() {

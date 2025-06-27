@@ -2136,21 +2136,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add these functions at the top of your file, before any event listeners
 function loadCoins() {
-    fetch('get_coins.php')
-        .then(response => response.json())
-        .then(data => {
-            console.log('Coin data received:', data); // Debug log
-            if (data.status === 'success') {
-                coins = parseInt(data.coins);
-                updateCoinsDisplay();
-                console.log('Coins loaded:', coins); // Debug log
-            } else {
-                console.error('Error loading coins:', data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching coins:', error);
-        });
+    const storedCoins = localStorage.getItem('fbbf_coins');
+    coins = storedCoins ? parseInt(storedCoins) : 0;
+    updateCoinsDisplay();
+}
+
+function saveCoins() {
+  localStorage.setItem('fbbf_coins', coins);
 }
 
 function updateCoinsDisplay() {
