@@ -1,426 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Chat</title>
-    <link rel="stylesheet" href="fbbf.css">
-    <style>
-        .chat-container {
-            max-width: 1000px;
-            margin: 20px auto;
-            background: #1a1a1a;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 100px);
-        }
-
-        .chat-header {
-            padding: 20px;
-            background: #2d2d2d;
-            border-radius: 10px 10px 0 0;
-            color: #4CAF50;
-        }
-
-        .chat-messages {
-            flex-grow: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .message {
-            padding: 10px 15px;
-            border-radius: 10px;
-            max-width: 70%;
-            word-wrap: break-word;
-        }
-
-        .message.sent {
-            background: #4CAF50;
-            color: white;
-            align-self: flex-end;
-        }
-
-        .message.received {
-            background: #333;
-            color: white;
-            align-self: flex-start;
-        }
-
-        .message .sender {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 0.9em;
-        }
-
-        .message .timestamp {
-            font-size: 0.8em;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-
-        .chat-input {
-            padding: 20px;
-            background: #2d2d2d;
-            border-radius: 0 0 10px 10px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .chat-input input {
-            flex-grow: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background: #333;
-            color: white;
-        }
-
-        .chat-input button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background: #4CAF50;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .chat-input button:hover {
-            background: #45a049;
-        }
-
-        .online-users {
-            position: fixed;
-            right: 20px;
-            top: 100px;
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            width: 200px;
-        }
-
-        .online-users h3 {
-            color: #4CAF50;
-            margin-bottom: 10px;
-        }
-
-        .user-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .user-list li {
-            padding: 5px 10px;
-            margin: 5px 0;
-            background: #2d2d2d;
-            border-radius: 5px;
-            color: white;
-        }
-
-        .user-list li::before {
-            content: "•";
-            color: #4CAF50;
-            margin-right: 5px;
-        }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/J.png?v=1729529423952"
+    />
+    <title>Socket.IO Chat Example</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header class="header">
-        <nav class="navbar">
-            <div class="hamburger" id="hamburger">&#9776;</div>
-            <span class="login" id="user-info">
-                <a class="login" href="/login.html">Login</a>
-                <a class="login" href="/signup.html">Sign up</a>
-            </span>
-            <div class="nav-links" id="nav-links">
-                <div class="games-grid">
-                    <div class="game-card" onclick="window.location.href='.'">
-                        <h3>Home</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='fbbf.html'">
-                        <h3>Flappy Bird</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='ttt.html'">
-                        <h3>Tic Tac Toe</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='gtn.html'">
-                        <h3>Guess the Number</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='wg.html'">
-                        <h3>Wordle Game</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='rps.html'">
-                        <h3>Rock Paper Scissors</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='mg.html'">
-                        <h3>Memory Game</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='casino.html'">
-                        <h3>Casino</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='trading.html'">
-                        <h3>Gift</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='chat.html'">
-                        <h3>Chat</h3>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='settings.html'">
-                        <h3>Settings</h3>
-                    </div>
-                </div>
+      <nav class="navbar">
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <span class="login" id="user-info">
+          <a class="login" href="/login.html" class="login-btn">Login</a>
+          <a class="login" href="/signup.html" class="signup-btn">Sign up</a>
+        </span>
+        <div class="nav-links" id="nav-links">
+          <div class="casual-games">
+            <div class="games-grid">
+              <div class="game-card" onclick="window.location.href='.'">
+                <h3>Home</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='fbbf.html'">
+                <h3>Flappy Bird</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='ttt.html'">
+                <h3>Tic Tac Toe</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='gtn.html'">
+                <h3>Guess the Number</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='wg.html'">
+                <h3>Wordle Game</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='rps.html'">
+                <h3>Rock Paper Scissors</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='mg.html'">
+                <h3>Memory Game</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='casino.html'">
+                <h3>Casino</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='trading.html'">
+                <h3>Gift</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='chat.html'">
+                <h3>Chat</h3>
+              </div>
+              <div class="game-card" onclick="window.location.href='settings.html'">
+                <h3>Settings</h3>
+              </div>
             </div>
-        </nav>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>Game Chat</h2>
+    <ul class="pages">
+      <li class="chat page">
+        <div class="chatArea">
+          <ul class="messages"></ul>
         </div>
-        <div class="chat-messages" id="chatMessages">
-            <!-- Messages will be added here dynamically -->
+        <input class="inputMessage" placeholder="Type here..." />
+      </li>
+      <li class="login page">
+        <div class="form">
+          <h3 class="title">What's your nickname?</h3>
+          <input class="usernameInput" type="text" maxlength="14" />
         </div>
-        <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="Type your message...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
+      </li>
+    </ul>
 
-    <div class="online-users">
-        <h3>Online Users</h3>
-        <ul class="user-list" id="onlineUsers">
-            <!-- Online users will be added here dynamically -->
-        </ul>
-    </div>
-
-    <script>
-        let lastMessageId = 0;
-        const POLL_INTERVAL = 2000; // Poll every 2 seconds
-        let pollInterval = null;
-        let isServerHealthy = false;
-
-        // Check server health
-        async function checkServerHealth() {
-            try {
-                const response = await fetch('/health');
-                if (!response.ok) throw new Error('Server health check failed');
-                const data = await response.json();
-                return data.status === 'success';
-            } catch (error) {
-                console.error('Server health check failed:', error);
-                return false;
-            }
-        }
-
-        async function startPolling() {
-            // Check server health first
-            isServerHealthy = await checkServerHealth();
-            
-            if (!isServerHealthy) {
-                addSystemMessage('Unable to connect to chat server. Retrying...');
-                setTimeout(startPolling, 5000); // Retry after 5 seconds
-                return;
-            }
-
-            // Initial poll
-            pollMessages();
-            
-            // Set up regular polling
-            pollInterval = setInterval(pollMessages, POLL_INTERVAL);
-            
-            // Add initial system message
-            addSystemMessage('Connected to chat');
-
-            // Set up periodic health checks
-            setInterval(async () => {
-                isServerHealthy = await checkServerHealth();
-                if (!isServerHealthy) {
-                    stopPolling();
-                    addSystemMessage('Lost connection to server. Attempting to reconnect...');
-                    setTimeout(startPolling, 5000);
-                }
-            }, 10000); // Check health every 10 seconds
-        }
-
-        function stopPolling() {
-            if (pollInterval) {
-                clearInterval(pollInterval);
-                pollInterval = null;
-            }
-        }
-
-        async function pollMessages() {
-            if (!isServerHealthy) return;
-
-            try {
-                const response = await fetch(`/messages?lastId=${lastMessageId}`);
-                if (!response.ok) throw new Error('Failed to fetch messages');
-                
-                const data = await response.json();
-                if (data.status === 'success' && data.messages.length > 0) {
-                    data.messages.forEach(message => {
-                        addMessage(message);
-                    });
-                    lastMessageId = data.lastId;
-                }
-            } catch (error) {
-                console.error('Polling error:', error);
-                // Don't show error message for every failed poll
-            }
-        }
-
-        // Send message function
-        async function sendMessage() {
-            if (!isServerHealthy) {
-                addSystemMessage('Cannot send message: Server is not connected');
-                return;
-            }
-
-            const messageInput = document.getElementById('messageInput');
-            const message = messageInput.value.trim();
-            
-            if (message) {
-                try {
-                    const response = await fetch('/send', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            content: message,
-                            sender: document.querySelector('.welcome-message')?.textContent?.split(', ')[1]?.replace('!', '') || 'Anonymous'
-                        })
-                    });
-
-                    if (!response.ok) throw new Error('Failed to send message');
-                    
-                    const data = await response.json();
-                    if (data.status === 'success') {
-                        messageInput.value = '';
-                        // Poll immediately after sending a message
-                        pollMessages();
-                    } else {
-                        throw new Error(data.message || 'Failed to send message');
-                    }
-                } catch (error) {
-                    console.error('Error sending message:', error);
-                    addSystemMessage('Failed to send message. Please try again.');
-                }
-            }
-        }
-
-        // Add message to chat
-        function addMessage(data) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${data.sender === 'System' ? 'system' : 'received'}`;
-            
-            messageDiv.innerHTML = `
-                <div class="sender">${data.sender}</div>
-                <div class="content">${data.content}</div>
-                <div class="timestamp">${new Date(data.timestamp).toLocaleTimeString()}</div>
-            `;
-            
-            const chatMessages = document.getElementById('chatMessages');
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Add system message
-        function addSystemMessage(message) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message system';
-            messageDiv.style.backgroundColor = '#666';
-            messageDiv.style.alignSelf = 'center';
-            
-            messageDiv.innerHTML = `
-                <div class="content">${message}</div>
-                <div class="timestamp">${new Date().toLocaleTimeString()}</div>
-            `;
-            
-            const chatMessages = document.getElementById('chatMessages');
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Update online users count with error handling
-        function updateOnlineUsers() {
-            fetch('/users')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.status === 'success') {
-                        const usersList = document.getElementById('onlineUsers');
-                        usersList.innerHTML = `<li>Online Users: ${data.count}</li>`;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching user count:', error);
-                    const usersList = document.getElementById('onlineUsers');
-                    usersList.innerHTML = '<li>User count unavailable</li>';
-                });
-        }
-
-        // Start the connection
-        startPolling();
-
-        // Update user count periodically
-        setInterval(() => {
-            updateOnlineUsers();
-        }, 5000);
-
-        // Handle Enter key in message input
-        document.getElementById('messageInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            // Fetch both session status and profile picture
-            Promise.all([
-                fetch('session_status.php').then(res => res.json()),
-                fetch('get_profile_pic.php').then(res => res.json())
-            ])
-                .then(([sessionData, profileData]) => {
-                    const userInfo = document.getElementById('user-info');
-
-                    if (sessionData.loggedIn) {
-                        // If user is logged in, show welcome message with profile pic and logout
-                        const profilePic = profileData.status === 'success' ? profileData.profilePic : 'https://cdn.glitch.global/c3af7ac1-befa-43f4-a580-dee2646df58c/sigma.png?v=1740408925158';
-                        userInfo.innerHTML = `
-                            <img src="${profilePic}" alt="Profile" class="nav-profile-pic">
-                            <a class="welcome-message">Velkommen, ${sessionData.username}!</a>
-                            <a class="login" href="logout.php" class="logout-btn">Logout</a>
-                        `;
-                    } else {
-                        // If not logged in, show login and signup buttons
-                        userInfo.innerHTML = `
-                            <a class="login" href="/login.html" class="login-btn">Login</a>
-                            <a class="login" href="/signup.html" class="signup-btn">Sign up</a>
-                        `;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        });
-
-        // JavaScript for toggling the navigation menu on mobile
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
-</body>
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html> 

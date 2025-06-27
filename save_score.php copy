@@ -16,16 +16,13 @@ if (isset($_SESSION['username'])) {
         $highScores = json_decode($fileContent, true);
     }
 
-    // Only add the score if it is greater than 0
-    if (!isset($highScores[$username])) {
-        $highScores[$username] = 0;
+    // Update the user's high score if it's higher than the previous one
+    if (!isset($highScores[$username]) || $newHighScore > $highScores[$username]) {
+        $highScores[$username] = $newHighScore;
+        
+        // Write the updated high scores back to the file
+        file_put_contents($file, json_encode($highScores));
     }
-    if ($newHighScore > 0) {
-        $highScores[$username] += $newHighScore;
-    }
-    
-    // Write the updated high scores back to the file
-    file_put_contents($file, json_encode($highScores));
 
     echo json_encode(['status' => 'success', 'new_high_score' => $highScores[$username]]);
 } else {

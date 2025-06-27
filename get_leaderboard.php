@@ -43,7 +43,7 @@ $leaderboard = array_map(function($score) use ($profilePics) {
 }, $scores);
 
 // Return only top 10 scores
-$leaderboard = array_slice($leaderboard, 0, 5);
+$leaderboard = array_slice($leaderboard, 0, 3);
 
 echo json_encode([
     'status' => 'success',

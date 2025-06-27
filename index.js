@@ -35,3 +35,14 @@ const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'flex';
+
+    document.getElementById('closePopup').addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+  }, 3000); // 3 sekunder efter siden er loadet
+});

@@ -185,12 +185,12 @@ const birdHeight = 24;
 let birdX = 50;
 let birdY = 400;
 let birdVelocity = 0;
-let gravity = 0.10; // lowered from 0.13 for easier gameplay
-const jump = -2.0;
-const mobileJump = -2.0;
+let gravity = 0.08;
+const jump = -2.5;
+const mobileJump = -2.5;
 const pipeWidth = 70;
 let pipeGap = 150;
-let pipeSpeed = 4.0; // doubled from 2.0
+let pipeSpeed = 1.5;
 let pipes = [];
 let score = 0;
 let highScore = 0;
@@ -200,7 +200,7 @@ let birdAngle = 0;
 let keepInMiddle = false;
 let godMode = false;
 let backgroundX = 0;
-let backgroundSpeed = 2.4; // doubled from 1.2
+const backgroundSpeed = 0.8;
 let coins = 0;
 let coinsSaved = false;
 let shopOpen = false;
@@ -329,12 +329,6 @@ let hitPipeId = null;
 // Add these variables at the top with other game variables
 let hasUsedSecondChance = false;
 let secondChancePipeId = null;
-
-// Add this at the top with other game variables
-let highScoreAddedThisGame = false; // Add this at the top with other game variables
-
-// Add this at the top with other game variables
-let lastFrameTime = performance.now();
 
 // Add this to your checkHackMenuAccess function
 function checkHackMenuAccess() {
@@ -522,7 +516,7 @@ function buyUpgrade(type) {
                 pipeSpeed = 1;
                 break;
             case 'lowerGravity':
-                gravity = 0.09; // less powerful than before, but still lower than default
+                gravity = 0.05;
                 break;
             case 'tripleCoins':
                 // No immediate effect needed as it's handled in the gameLoop
@@ -760,9 +754,6 @@ function resetGame() {
 
     // Update the visual state
     updateUpgradesList();
-
-    // Reset the flag
-    highScoreAddedThisGame = false;
 }
 
 document.addEventListener("keydown", function (e) {
@@ -794,7 +785,7 @@ function handleJump() {
   }
 }
 
-function drawBackground(deltaTime = 1) {
+function drawBackground() {
   ctx.drawImage(backgroundImage, backgroundX, 0, canvas.width, canvas.height);
   ctx.drawImage(
     backgroundImage,
@@ -804,7 +795,7 @@ function drawBackground(deltaTime = 1) {
     canvas.height
   );
 
-  backgroundX -= backgroundSpeed * deltaTime;
+  backgroundX -= backgroundSpeed;
   if (backgroundX <= -canvas.width) {
     backgroundX = 0;
   }
@@ -961,19 +952,14 @@ function drawScore() {
 
 
 function gameLoop() {
-  // Calculate deltaTime (normalized to 60 FPS)
-  let now = performance.now();
-  let deltaTime = (now - lastFrameTime) / 16.67; // 16.67ms = 60 FPS
-  lastFrameTime = now;
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawBackground(deltaTime);
+  drawBackground();
 
   if (gameRunning) {
     // Apply gravity and update bird position
     if (!keepInMiddle) {
-      birdVelocity += gravity * deltaTime;
-      birdY += birdVelocity * deltaTime;
+      birdVelocity += gravity;
+      birdY += birdVelocity;
     } else {
       birdY = canvas.height / 2 - birdHeight / 2;
     }
@@ -996,14 +982,7 @@ function gameLoop() {
     }
 
     drawBird();
-    // Update pipes with deltaTime
-    pipes.forEach((pipe) => {
-      pipe.x -= pipeSpeed * deltaTime;
-    });
-    pipes = pipes.filter((pipe) => pipe.x + pipeWidth > 0);
-    if (pipes.length === 0 || pipes[pipes.length - 1].x < canvas.width - 200) {
-      createPipe();
-    }
+    updatePipes();
     drawPipes();
     checkCollision();
 
@@ -1024,10 +1003,9 @@ function gameLoop() {
   if (gameOver) {
     gameRunning = false;
 
-    if (!highScoreAddedThisGame && score > 0) {
-      highScore += score;
+    if (score > highScore) {
+      highScore = score;
       saveHighScore();
-      highScoreAddedThisGame = true;
     }
     
     if (!coinsSaved) {
@@ -1508,7 +1486,7 @@ function buyAllPack() {
         // Apply all upgrades
         pipeGap = 180;
         pipeSpeed = 1;
-        gravity = 0.09; // less powerful than before, but still lower than default
+        gravity = 0.05;
         
         saveCoins();
         saveUpgrades();  // Save upgrades after purchase
@@ -1596,7 +1574,7 @@ function loadUpgrades() {
                                 pipeSpeed = 1;
                                 break;
                             case 'lowerGravity':
-                                gravity = 0.09; // less powerful than before, but still lower than default
+                                gravity = 0.05;
                                 break;
                         }
                     }
@@ -1714,7 +1692,7 @@ function toggleUpgrade(type) {
                     pipeSpeed = 1;
                     break;
                 case 'lowerGravity':
-                    gravity = 0.09; // less powerful than before, but still lower than default
+                    gravity = 0.05;
                     break;
             }
         } else {
@@ -1726,7 +1704,7 @@ function toggleUpgrade(type) {
                     pipeSpeed = 1.5;
                     break;
                 case 'lowerGravity':
-                    gravity = 0.11;
+                    gravity = 0.08;
                     break;
             }
         }

@@ -21,3 +21,5 @@ Brugernavn: Ac_normall, Email: asgerchristensen2606@gmail.com, Adgangskode: $2y$
 Brugernavn: PandaGangTwich, Email: PandaGangTV@outlook.dk, Adgangskode: $2y$10$TVPnB0wJC1gFl133DFyALebi60iY2DLwPjUhMlDvuiWL0B4nMk4cG
 Brugernavn: brugernavn, Email: b@b.b, Adgangskode: $2y$10$nbdLFxmZX9Rq4k2SLtqQheI8eUrnss0HiOYq2LvTM64NK18SOkwzu
 Brugernavn: P.PillerTilSalg, Email: david.math.c@gmail.com, Adgangskode: $2y$10$ossn8ceUjtEBp9SgDE7fZujyiadMdjt/1uxHLgupFlV44gFouisVK
+Brugernavn: deez, Email: yourmom@youdad.yoursisterinmybed, Adgangskode: $2y$10$9IFAUkuO4vTrEL9V23pUaut/TyflPkmRrvdq1m138sdf9HLGTl10i
+Brugernavn: olgierd, Email: olgi0014@apps.vejle.dk, Adgangskode: $2y$10$1InACHCosWpOI8HWL7uz4uI/c.0lST6STcM.lWyYJuCPC9lPidukS

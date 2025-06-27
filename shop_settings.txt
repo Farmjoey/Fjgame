@@ -24,15 +24,15 @@
     "price": 50000
   },
   "widerPipeGap": {
-    "visible": false,
+    "visible": true,
     "price": 10000
   },
   "slowerPipes": {
-    "visible": false,
+    "visible": true,
     "price": 10000
   },
   "lowerGravity": {
-    "visible": false,
+    "visible": true,
     "price": 10000
   },
   "greenBirdSkin": {
@@ -112,11 +112,11 @@
     "price": 50000
   },
   "cyhnBirdSkin": {
-    "visible": true,
+    "visible": false,
     "price": 50000
   },
   "uncollaredBirdSkin": {
-    "visible": true,
+    "visible": false,
     "price": 50000
   },
   "secondChance": {
